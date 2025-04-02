@@ -1,0 +1,31 @@
+services:
+
+  network-visualization:
+    image: tensorflow/network-visualization:v0.0.1
+    container_name: network-visualization
+    build:
+      dockerfile: ./Dockerfile
+    networks:
+      - netviz-network
+    volumes:
+      - ./app:/netowrk-viz-app
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    healthcheck:
+      test: nvidia-smi
+      interval: 5s
+      timeout: 5s
+      retries: 3
+    command: ["sleep", "infinity"]
+
+networks:
+
+  netviz-network:
+    name: netviz-network
+    driver: bridge
+    external: true

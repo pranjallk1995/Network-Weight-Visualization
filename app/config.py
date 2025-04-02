@@ -1,0 +1,1 @@
+""" module to store all config settings"""
