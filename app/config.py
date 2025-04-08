@@ -1,1 +1,10 @@
 """ module to store all config settings"""
+
+import os
+
+# hyper params
+LEARNING_RATE = 0.45
+EPOCHS = 1000
+
+# paths
+CHECKPOINT_PATH = os.path.join(os.getcwd(), "model", "cp-{epoch:04d}.weights.h5")
