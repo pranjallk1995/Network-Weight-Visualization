@@ -54,7 +54,7 @@ class DemoNetwork():
     def train_network(self) -> None:
         """function to train the sample network"""
 
-        if len(cfg.CHECKPOINT_PATH):
+        if len(os.listdir(cfg.TRAINED_WEIGHTS_PATH)):
             self.network.load_weights(os.path.join("model", "cp-1000.weights.h5"))
         else:
             cp_callback = tf.keras.callbacks.ModelCheckpoint(
