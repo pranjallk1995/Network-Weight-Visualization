@@ -58,7 +58,7 @@ class DemoNetwork():
             self.network.load_weights(os.path.join("model", "cp-1000.weights.h5"))
         else:
             cp_callback = tf.keras.callbacks.ModelCheckpoint(
-                filepath=cfg.CHECKPOINT_PATH, verbose=1, save_weights_only=True, save_freq=int(cfg.EPOCHS/20)
+                filepath=cfg.CHECKPOINT_PATH, verbose=1, save_weights_only=True, save_freq=int(cfg.EPOCHS/50)
             )
 
             self.network.fit(
@@ -145,7 +145,7 @@ class VizNetwork():
                 for weight_index, weight in weights.items():
                     layer_traces.append(
                         go.Scatter(
-                            x=(np.arange(len(weight))+1)*50, y=np.asarray(weight),
+                            x=(np.arange(len(weight))+1)*20, y=np.asarray(weight),
                             name=weight_index, mode="lines+markers"
                         )
                     )
