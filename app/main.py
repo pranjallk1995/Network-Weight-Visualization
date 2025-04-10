@@ -64,7 +64,7 @@ class DemoNetwork():
             self.network.fit(
                 tf.convert_to_tensor([[0., 0.], [1., 0.], [0., 1.], [1., 1.]]),
                 tf.convert_to_tensor([[0.], [1.], [1.], [0.]]),
-                epochs=cfg.EPOCHS, callbacks=[cp_callback]
+                epochs=cfg.EPOCHS, steps_per_epoch=cfg.STEPS, callbacks=[cp_callback]
             )
 
     def check_trained_network(self) -> None:
