@@ -24,12 +24,7 @@ class DemoNetwork():
 
         self.network.add(
             Dense(
-                units=2, activation="sigmoid", input_shape=(self.input_shape,), name="Input_Layer"
-            )
-        )
-        self.network.add(
-            Dense(
-                units=2, activation="sigmoid", name="Hidden_Layer_1"
+                units=4, activation="sigmoid", input_shape=(self.input_shape,), name="Hidden_Layer"
             )
         )
         self.network.add(
@@ -55,10 +50,10 @@ class DemoNetwork():
         """function to train the sample network"""
 
         if len(os.listdir(cfg.TRAINED_WEIGHTS_PATH)):
-            self.network.load_weights(os.path.join("model", "cp-1000.weights.h5"))
+            self.network.load_weights(os.path.join("model", "cp-0500.weights.h5"))
         else:
             cp_callback = tf.keras.callbacks.ModelCheckpoint(
-                filepath=cfg.CHECKPOINT_PATH, verbose=1, save_weights_only=True, save_freq=int(cfg.EPOCHS/50)
+                filepath=cfg.CHECKPOINT_PATH, verbose=1, save_weights_only=True, save_freq=int(cfg.EPOCHS/10)
             )
 
             self.network.fit(

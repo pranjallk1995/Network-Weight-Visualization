@@ -4,7 +4,7 @@ import os
 
 # hyper params
 LEARNING_RATE = 0.45
-EPOCHS = 1000
+EPOCHS = 500
 STEPS = 1000
 
 # paths
